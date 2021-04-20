@@ -8,6 +8,7 @@ class Head {
     private:
         int count;
         class Node* head;
+        class Node* tail;
     public:
         Head();
         void add_node(Node*);
