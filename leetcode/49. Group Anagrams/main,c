@@ -1,0 +1,58 @@
+struct data {
+    int index[100];
+    int map[26];
+    int count;
+};
+
+void store_map(char *str, int str_index, struct data *map, int *index) {
+     char tmp[26];
+     memset(tmp, 0, 26);
+
+     for(int i = 0; i < strlen(str); i++)
+        tmp[str[i]-'a'] ++;
+        
+    for(int i = 0; i < *index; i++) {
+        if(memcmp(map[i].map, tmp, 26) == 0) {
+            map[i].index[map[i].count] = str_index;
+            map[i].count ++;
+            return;
+        }
+    }
+
+    memcpy(map[*index].map, tmp, 26);
+    map[*index].index[map[*index].count] = str_index;
+    map[*index].count = 1;
+    (*index) ++;
+    
+    return;
+ }
+
+char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes) {
+    if(strs == NULL)
+        return NULL;
+
+    struct data map[10000];
+    memset(map, 0, sizeof(struct data)*10000);
+    int map_count = 0;
+
+    *returnSize = 0;
+    *returnColumnSizes = (int*)malloc(sizeof(int) * 10000);
+
+    char ***ret = (char***)malloc(sizeof(char**) * 10000);
+        
+    for(int i = 0; i < strsSize; i++)
+        store_map(strs[i], i ,map, &map_count);
+
+    *returnSize = map_count;
+    int index = 0;
+    for(int i = 0; i < map_count; i++) {
+        (*returnColumnSizes)[i] = map[i].count;
+        ret[i] = (char**) malloc(sizeof(char*) * map[i].count);
+        for(int j = 0; j < map[i].count; j++) {
+            ret[i][j] = malloc(strlen(strs[map[i].index[j]]) + 1);
+            strcpy(ret[i][j], strs[map[i].index[j]]);  
+        }
+    }
+
+    return ret;
+}
