@@ -1,0 +1,15 @@
+### sol 
+- 題目要求: 不能用除的
+- 用 pre, post 觀念 (不要乘到自己)
+    - pre => 從前面乘到後面
+    - post => 從後面乘到前面 
+    - result => pre * post
+    - example
+        - [1, 2, 3, 4]
+            - pre: [1, 1, 2. 6]
+            - post: [24, 12, 4, 1]
+            - result=> [24, 12, 8, 6]
+- 優化(不要存 pre post 直接存在 return array)
+    - 分2部
+        - pre: 從前面乘到後面 存在 result
+        - post: 從後面乘回來 * result
