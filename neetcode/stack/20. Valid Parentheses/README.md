@@ -1,4 +1,4 @@
-### sol
-- 題目: 後序運算
-- sol
-    - 把數字放進 stack 中，當遇到 `+` `-` `*` `/` 時，把stack 中 2個數字拿出來，算完再塞回去
+- Question: check if the parantheses is valid
+- sol:
+    - Use stack, put in `(` `[` `{`
+    - when encounter `)` `]` `}`, it check if mapping symbol or not. ex: `(` => `)`, `[` => `]`, `{` => `}` 
