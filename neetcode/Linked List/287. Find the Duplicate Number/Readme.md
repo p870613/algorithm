@@ -6,7 +6,7 @@
         - In this case, we can use `slow` and `fast`
         - `slow` node move one node once and `fast` node move two node once.
         - proof:
-            ![image](https://hackmd.io/_uploads/rkaiwzRXC.png)
+            ![image](./PIC.png)
 
 
 
